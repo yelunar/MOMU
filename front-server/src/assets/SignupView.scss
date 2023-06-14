@@ -1,0 +1,93 @@
+@import "./base.scss";
+
+.login {
+  margin: 0%;
+  width: 100vw;
+  height: 100vh;
+}
+
+.signupForm {
+  padding-top: 7%;
+  padding-left: 20%;
+  padding-right: 35%;
+}
+.signupForm2 {
+  padding-left: 15%;
+  padding-right: 35%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  &__title {
+    margin-bottom: 32px;
+    font-size: 1.5rem;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 16px;
+    &__input {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 24px;
+      label {
+        display: block;
+        margin-bottom: 12px;
+      }
+      input[type="email"],
+      input[type="text"],
+      input[type="password"] {
+        height: 40px;
+        color: white;
+        border-radius: 10px;
+        border: 1px solid transparent;
+        background: linear-gradient($bg-color, $bg-color) padding-box,
+          $gradiant01 border-box;
+        &::placeholder {
+          position: relative;
+          left: 8px;
+        }
+        :focus {
+          color: red;
+        }
+      }
+      // input[type="password"] {
+      //   margin-bottom: 24px;
+      // }
+      // #app > div > div > div.form-container > form > div:nth-child(3)
+      &:nth-last-child(2) {
+        margin-bottom: 40px;
+      }
+    }
+    &__submit {
+      height: 50px;
+      width: 100%;
+      
+      border-radius: 25px;
+      color: white;
+      font-weight: 800;
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
+      appearance: none;
+      // background-color: $gradiant01 !important;
+      background: $gradiant01;
+      cursor: pointer;
+    }
+  }
+  &__comment {
+    display: inline;
+    margin-right: 8px;
+  }
+  &__link {
+    display: inline;
+    text-decoration: none;
+    color: transparent;
+    font-weight: bold;
+    background: $gradiant01;
+    -webkit-background-clip: text;
+  }
+}

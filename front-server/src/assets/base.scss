@@ -1,0 +1,179 @@
+// color
+$bg-color: #141217;
+$container: #231f2b;
+$bg-color2: #f2f2f2;
+$point-color: rgb(96, 247, 134);
+$grey1: rgb(192, 192, 192);
+$grey2: rgb(145, 145, 145);
+$grad-pink: #9ad7c1;
+$grad-purple: #04aa6d;
+$gradiant01: linear-gradient(45deg, $grad-pink, $grad-purple);
+
+// font with gradient color
+@mixin font-gradient() {
+  color: transparent;
+  background: $gradiant01;
+  -webkit-background-clip: text;
+}
+
+// box with gradient border
+@mixin border-gradient() {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: linear-gradient($container, $container) padding-box,
+    $gradiant01 border-box;
+}
+
+// box with gradient border-right
+@mixin border-right-gradient() {
+  border-right: 1px solid rgba(0, 0, 0, 0.8);
+  background: linear-gradient($bg-color, $bg-color) padding-box,
+    $gradiant01 border-box;
+}
+
+// form button
+@mixin form-button() {
+  background: $gradiant01;
+  border-radius: 18px;
+  padding: 8px 32px;
+  // height: 36px;
+  color: $bg-color;
+  font-weight: 600;
+  font-size: 0.8rem;
+  font-family: inherit;
+}
+
+// font
+@font-face {
+  font-family: "NanumSquareNeo-Variable";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "RixInooAriDuriR";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css");
+$logo-font: "Montserrat", sans-serif;
+$title-font: "nanumsquare";
+$content-font: "nanumsquare";
+
+// circle shape
+@mixin circle($width) {
+  width: $width;
+  height: $width;
+  border-radius: $width / 2;
+}
+
+// poster widht, height ratio
+@mixin poster-div($width) {
+  width: $width;
+  height: 0;
+  padding-bottom: $width * 1.5;
+  border-radius: $width * 0.1;
+  background-size: cover;
+  overflow: hidden;
+}
+
+// custom scroll-bar
+@mixin custom-scroll-bar() {
+  &::-webkit-scrollbar {
+    border-radius: 10px;
+    height: 10px;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($color: #ffffff, $alpha: 0.1);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+}
+
+// button style
+@mixin button() {
+  height: 40px;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background: linear-gradient($container, $container) padding-box,
+    $gradiant01 border-box;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+
+  &__text {
+    color: transparent;
+    background: $gradiant01;
+    -webkit-background-clip: text;
+    opacity: 1;
+    font-weight: 700;
+  }
+  svg {
+    width: 18px;
+    margin-right: 8px;
+    fill: white;
+    opacity: 0.7;
+  }
+}
+
+// hover button style
+@mixin button2() {
+  height: 40px;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: linear-gradient($container, $container) padding-box,
+    $gradiant01 border-box;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  // margin-bottom: 20px;
+
+  &__text {
+    color: transparent;
+    background: $gradiant01;
+    -webkit-background-clip: text;
+    opacity: 1;
+    font-weight: 700;
+  }
+  svg {
+    width: 18px;
+    margin-right: 8px;
+    fill: white;
+    opacity: 0.7;
+  }
+}
+
+body {
+  font-family: $content-font;
+  background-color: $bg-color;
+}
+
+.app {
+  background-color: $bg-color;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.hidden {
+  display: none !important;
+}

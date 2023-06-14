@@ -1,0 +1,570 @@
+<template>
+  <div>
+    <!-- 프로필 이미지 변경 Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal123"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">프로필 사진 변경</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <b-form-file
+              v-model="file1"
+              :state="Boolean(file1)"
+              placeholder="Choose a file or drop it here..."
+              drop-placeholder="Drop file here..."
+            ></b-form-file>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" @click="onclick">
+              사진 변경
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 팔로잉 Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal456"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">팔로잉</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              <span
+                v-for="following in profile.followings"
+                :key="following.pk"
+                >{{ following.username }}</span
+              >
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <!-- <button type="button" class="btn btn-primary" @click="onclick">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 팔로워 Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal789"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">팔로워</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              <span v-for="follower in profile.followers" :key="follower.pk">{{
+                follower.username
+              }}</span>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 회원 탈퇴 모달 -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">회원탈퇴</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            진짜로 회원탈퇴를 하시려면
+            <span class="text-danger"> 회원탈퇴</span> 를 쳐주세요
+            <input type="text" v-model="inputdata" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              @click="userdelete"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profilecon">
+      <div class="pt-5">
+        <div
+          class="profile"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal123"
+        >
+          <img
+            style="position: relative; width: 150px; height: 150px"
+            :src="require(`../../../back-server/media/${profile_img}`)"
+            alt=""
+          />
+        </div>
+        <div style="position: absolute; right: 3%; top: 2%">
+          <button
+            type="button"
+            class="btn btn-outline-danger mt-1 me-1"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            회원탈퇴
+          </button>
+          <router-link
+            class="btn btn-outline-success"
+            :to="{
+              name: 'UserUpdateView',
+            }"
+            >회원정보수정</router-link
+          >
+        </div>
+        <div class="info text-white pt-5 ps-1">
+          <h2 style="font-weight: 700">{{ profile.nickname }}님의 프로필</h2>
+          <h4>
+            <span data-bs-toggle="modal" data-bs-target="#exampleModal456"
+              >{{ profile.followings?.length }} 팔로잉
+            </span>
+            <span data-bs-toggle="modal" data-bs-target="#exampleModal789"
+              >{{ profile.followers?.length }} 팔로워</span
+            >
+          </h4>
+
+          <div
+            @click="follow"
+            v-if="profile.username != this.$store.state.currentUser?.username"
+          >
+            <button class="btn btn-outline-danger waves-effect mb-2 me-2">
+              👬
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        height: 70vh;
+        width: 100vw;
+        background-color: blue;
+        display: flex;
+        overflow: scroll;
+      "
+    >
+      <div style="width: 60vw; height: 100%; background-color: green">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="pills-home-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#pills-home"
+              type="button"
+              role="tab"
+              aria-controls="pills-home"
+              aria-selected="true"
+            >
+              좋아요한 게시글
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="pills-profile-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#pills-profile"
+              type="button"
+              role="tab"
+              aria-controls="pills-profile"
+              aria-selected="false"
+            >
+              좋아요한 영화
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="pills-contact-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#pills-contact"
+              type="button"
+              role="tab"
+              aria-controls="pills-contact"
+              aria-selected="false"
+            >
+              좋아요한 음악
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="pills-home"
+            role="tabpanel"
+            aria-labelledby="pills-home-tab"
+          >
+            <div v-for="article in profile.like_articles" :key="article.id">
+              <p v-if="article.article_music.length === 0">
+                <img :src="article.article_movie[0].poster_path" alt="" />
+                <span
+                  class="text-dark"
+                  @click="
+                    $router.push({
+                      name: 'DetailView',
+                      params: { id: article?.id },
+                    })
+                  "
+                  >[{{ article.article_movie[0].title }}]
+                  {{ article?.title }}</span
+                >
+              </p>
+              <p v-else>
+                <img :src="article.article_music[0].album_img" alt="" />
+                <span
+                  class="text-white"
+                  @click="
+                    $router.push({
+                      name: 'MusicArticleDetailView',
+                      params: { id: article?.id },
+                    })
+                  "
+                  >[{{ article.article_music[0].title }}]
+                  {{ article?.title }}</span
+                >
+              </p>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-profile"
+            role="tabpanel"
+            aria-labelledby="pills-profile-tab"
+          >
+            <div v-for="music in profile.like_music" :key="music.id">
+              <img
+                :src="music.album_img"
+                alt=""
+                style="width: 150px; hight: 150px"
+                @click="
+                  $router.push({
+                    name: 'MusicDetailView',
+                    params: { musicid: music?.id },
+                  })
+                "
+              />
+              <p>
+                <span class="text-white"> {{ music.title }}</span>
+              </p>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-contact"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab"
+          >
+            <div v-for="movie in profile.like_movies" :key="movie.id">
+              <img
+                :src="movie.poster_path"
+                alt=""
+                style="width: 150px; hight: 150px"
+                @click="
+                  $router.push({
+                    name: 'MovieDetailView',
+                    params: { movieid: movie?.id },
+                  })
+                "
+              />
+              <p>
+                <span
+                  class="text-dark"
+                  @click="
+                    $router.push({
+                      name: 'MovieDetailView',
+                      params: { movieid: movie?.id },
+                    })
+                  "
+                >
+                  {{ movie.title }}</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="width: 40vw; height: 100wh; background-color: blue">
+        <h1>내가 쓴 리뷰</h1>
+        <div class="border">
+          <div
+            v-for="article in profile.articles"
+            :key="article.id"
+            style="height: 220px"
+          >
+            <span v-if="article.article_music?.length === 0">
+              <img
+                :src="article.article_movie[0]?.poster_path"
+                alt=""
+                style="display: flex; float: left; width: 18vw; height: 220px"
+              />
+              <div
+                class="text-dark"
+                style=""
+                @click="
+                  $router.push({
+                    name: 'DetailView',
+                    params: { id: article?.id },
+                  })
+                "
+              >
+                [{{ article.article_movie[0]?.title }}] <br /><br />
+                {{ article?.title }}
+              </div>
+            </span>
+            <span v-else>
+              <img
+                :src="article.article_music[0]?.album_img"
+                alt=""
+                style="display: flex; float: left; width: 18vw; height: 220px"
+              />
+              <span
+                class="text-dark"
+                @click="
+                  $router.push({
+                    name: 'MusicArticleDetailView',
+                    params: { id: article?.id },
+                  })
+                "
+                >[{{ article.article_music[0]?.title }}] <br /><br />
+                {{ article?.title }}</span
+              >
+            </span>
+            <!-- <p v-else>
+                <span
+                  class="text-white"
+                  @click="
+                    $router.push({
+                      name: 'MusicArticleDetailView',
+                      params: { id: article?.id },
+                    })
+                  "
+                  >[{{ article.article_music[0].title }}]
+                  {{ article?.title }}</span
+                >
+                {{profile.like_movies}}
+              </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+const API_URL = "http://127.0.0.1:8000";
+import axios from "axios";
+import _ from "lodash";
+export default {
+  name: "ProfileView",
+  data() {
+    return {
+      articles: [],
+      username: "",
+      file1: null,
+      inputdata: "",
+      likearticles: [],
+      followings: [],
+      followers: [],
+      profileColorList: [
+        "#FFC83D",
+        "#01B2FF",
+        "#FFAA2C",
+        "#FDA8C6",
+        "#E40000",
+        "#65E500",
+        "#210066",
+        "#121212",
+        "#F4F4F4",
+        "#F08080",
+      ],
+    };
+  },
+  computed: {
+    profile() {
+      return this.$store.getters.profile;
+    },
+    profile_img() {
+      const abc = this.profile.profile_image?.substring(1);
+      //
+      return abc;
+    },
+  },
+  created() {
+    this.getprofile();
+  },
+  methods: {
+    onclick() {
+      const userpk = this.profile.id;
+      const profile_image = this.file1;
+      console.log(profile_image);
+      axios({
+        method: "post",
+        url: `${API_URL}/api/v1/accounts/imgchange/`,
+        headers: {
+          Authorization: `Token ${this.$store.getters.token}`,
+          "Content-Type": "multipart/form-data",
+        },
+        data: {
+          userpk,
+          profile_image,
+        },
+      }).then((res) => {
+        console.log(res);
+        this.$store.dispatch("CurrentUser", this.profile.username);
+        this.$router.go(0);
+      });
+    },
+    getColors: function () {
+      return _.sample(this.profileColorList);
+    },
+    getprofile() {
+      const username = this.$route.params.userid;
+      console.log(username);
+      this.$store.dispatch("getprofile", username);
+    },
+    follow() {
+      const payload = { username: this.$route.params.userid };
+      console.log(payload);
+      this.$store.dispatch("follow", payload);
+    },
+
+    userdelete() {
+      const inputdata = this.inputdata;
+      console.log(inputdata);
+      const username = this.$route.params.userid;
+      if (inputdata === "회원탈퇴") {
+        axios({
+          method: "delete",
+          url: `${API_URL}/api/v1/accounts/profile/${username}/`,
+          headers: {
+            Authorization: `Token ${this.$store.getters.token}`,
+          },
+        }).then((res) => {
+          console.log(res);
+          this.$store.dispatch("logout");
+        });
+      }
+    },
+  },
+};
+</script>
+
+<style>
+.profilecon {
+  height: 35vh;
+  width: 100vw;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.685),
+      rgba(20, 18, 23, 0.534)
+    ),
+    url(../profile.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-content: center;
+}
+
+.profile {
+  position: relative;
+  /* top:40px; */
+  width: 150px;
+  height: 150px;
+  margin: 10px 10vw;
+  /* background-color: #f08080; */
+  border-radius: 100px;
+  overflow: hidden;
+  float: left;
+
+  /* margin-left: 120px; */
+}
+</style>

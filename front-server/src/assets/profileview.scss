@@ -1,0 +1,57 @@
+@import "./base.scss";
+
+.profilecon {
+  height: 30vh;
+  width: 100vw;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.685),
+      rgba(20, 18, 23, 0.534)
+    ),
+    url(../profile.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.profile {
+  position: relative;
+  /* top:40px; */
+  width: 150px;
+  height: 150px;
+  margin: 10px 10vw px 15%;
+  /* background-color: #f08080; */
+  border-radius: 100px;
+  overflow: hidden;
+  float: left;
+
+  /* margin-left: 120px; */
+}
+
+.UserDetail {
+  width: 100vw;
+  height: 100%;
+  // padding: 32px;
+  box-sizing: border-box;
+  overflow: scroll;
+  overflow-x: hidden;
+  @include custom-scroll-bar;
+}
+
+.header {
+  width: 100vw;
+  height: 30vh;
+  background-size: cover;
+  background-position: 50% 20%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 32px 64px;
+  box-sizing: border-box;
+}
+
+.profile_img {
+  box-sizing: border-box;
+  background-size: cover;
+  margin-right: 24px;
+  position: relative;
+}

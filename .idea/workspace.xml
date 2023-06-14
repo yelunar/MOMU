@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8e9555d2-2bc1-4a43-a461-19e109d080f6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/back-server/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/back-server/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-server/my_api/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back-server/my_api/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/components/ArticleList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/components/ArticleList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/components/ArticleListItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/components/ArticleListItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/views/ArticleView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/views/ArticleView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/views/CreateView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/views/CreateView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/views/DetailView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/views/DetailView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/views/MovieDetailView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/views/MovieDetailView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/views/MovieView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/views/MovieView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/views/MusicDetailView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/views/MusicDetailView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/views/ProfileView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/views/ProfileView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-server/src/views/sampleView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-server/src/views/sampleView.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2Q7ojP8k1YhqoP5EK4vMlBG32T7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e9555d2-2bc1-4a43-a461-19e109d080f6" name="Default Changelist" comment="" />
+      <created>1684714117372</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684714117372</updated>
+    </task>
+    <servers />
+  </component>
+</project>

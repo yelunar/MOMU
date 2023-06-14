@@ -1,0 +1,55 @@
+path('imgchange/', views.imgchange),
+
+
+
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+
+@api_view(['POST', 'PUT'])
+@method_decorator(csrf_exempt, name='dispatch')
+def imgchange(request):
+    userpk = request.data.get('userpk')
+    img = request.data.get('profile_image')
+    user = get_object_or_404(User, pk=userpk)
+    img = img.decode('utf16')
+    user.profile_image = img
+    user.save()
+    
+    data = [{'profile_image': user.profile_image}]
+    return Response({'data':'사진 교체 완료'})
+    # print(user)
+    # user.save()
+    # return Response(user)
+
+
+
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal123" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <b-form-file
+      v-model="file1"
+      :state="Boolean(file1)"
+      placeholder="Choose a file or drop it here..."
+      drop-placeholder="Drop file here..."
+    ></b-form-file>
+    <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" @click="onclick">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+ file1: null,

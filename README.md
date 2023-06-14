@@ -4,17 +4,33 @@
 
 [🗓️ 프로젝트 개요](#item-one)
 
-[👨‍💻 Team(진상듀오) 팀원 정보 및 업무 분담 내역](#------team-----------------------)
+[👨‍💻 Team(진상듀오) 팀원 정보 및 업무 분담 내역](#item-two)
 
-[🎨 기술 스택](#--------)
+[🎨 기술 스택](#item-three)
 
-[🦩 데이터 베이스 모델링 (ERD)](#----------------erd-)
+[🦩 데이터 베이스 모델링 (ERD)](#item-four)
 
-[🔍 추천 알고리즘 소개](#-------------)
+[🔍 추천 알고리즘 소개](#item-five)
 
-[🪟 서비스 구현 화면](#------------)
+[🪟 서비스 구현 화면](#item-six)
 
-[🎸 기타사항](#-------)
+- [1)Home](#item-eight)
+
+- [2) Login, Sign up](#item-nine)
+
+- [3) Profile](#item-ten)
+
+- [4) All Movie / All Music](#item-eleven)
+
+- [5) Movie detail / Music detail](#item-twelve)
+
+- [6) Create Review, Update Review](#item-thirteen)
+
+- [7) Article Detail](#item-fourteen)
+
+- [8) Search](#item-fifteen)
+
+[🎸 기타사항](#item-seven)
 
 <a id="item-one"></a>
 
@@ -27,19 +43,27 @@
   - 검색을 통한 영화, 음악 추천 웹서비스를 개발합니다.
   - 사용자에게 영화, 음악 관련 다양한 경험을 제공합니다.
 
+<a id="item-two"></a>
+
 ## 👨‍💻 Team(진상듀오) 팀원 정보 및 업무 분담 내역
 
 **최상익** - 영화 데이터 수집 및 정제, 추천 알고리즘 개발, ERD 설계, DB 구축 및 Back-End 개발, Front-END 개발
 
 **김예진** - 화면 설계서 제작, 음악 데이터 수집 및 정제, Back-End 개발, Front-END 개발 및 UI, UX 개선
 
+<a id="item-three"></a> 
+
 ## 🎨 기술 스택
 
 ![image-20220526173958331.png](https://github.com/kongji9847/MTX/blob/master/README.assets/image-20220526173958331.png?raw=true)
 
+<a id="item-four"></a>
+
 ## 🦩 데이터 베이스 모델링 (ERD)
 
 ![](README_assets/2023-06-15-01-33-43-image.png)
+
+<a id="item-five"></a>
 
 ## 🔍 추천 알고리즘 소개
 
@@ -87,7 +111,11 @@ def search_music(request, musicname):
 
 ➡️ search_movie, search_music을 구현할 때 `jaro_winkler_similarity` 을 통해 구현하였다.
 
+<a id="item-six"></a>
+
 ## 🪟 서비스 구현 화면
+
+<a id="item-eight"></a>
 
 ### 1) Home
 
@@ -123,6 +151,8 @@ def search_music(request, musicname):
 
 - 사이드바는 토글버튼을 넣어 클릭 시 비활성화, 활성화 전환 기능을 추가하였다.
 
+<a id="item-nine"></a>
+
 ### 2) Login, Sign up
 
 ![](README_assets/2023-06-15-01-57-58-image.png)
@@ -136,6 +166,8 @@ def search_music(request, musicname):
 ![](README_assets/2023-06-15-01-58-22-image.png)
 
 - 이메일, 비밀번호와 비밀번호 확인 일치, 올바른 형식의 MBTI가 입력 되지 않았을시 경고 팝업창을 추가하였다.
+
+<a id="item-ten"></a>
 
 ### 3) Profile
 
@@ -187,6 +219,8 @@ def search_music(request, musicname):
 
 - 해당 유저의 프로필 창에서는 해당 유저의 게시글 및 좋아요 정보, 팔로우 버튼이 활성화 되어 있어 팔로우를 할 수 있다.
 
+<a id="item-eleven"></a>
+
 ### 4) All Movie / All Music
 
 ![](README_assets/2023-06-15-02-07-27-image.png)
@@ -200,6 +234,8 @@ def search_music(request, musicname):
 ![](README_assets/2023-06-15-02-08-14-image.png)
 
 - 전체 음악 페이지도 동일하게 이미지 호버시 팝업, 클릭시 디테일 이동한다.
+
+<a id="item-twelve"></a>
 
 ### 5) Movie detail / Music detail
 
@@ -221,6 +257,8 @@ def search_music(request, musicname):
 
 - 음악 디테일의 경우 `iframe`을 통해 유튜브 뮤직 비디오를 배경으로 영화 디테일 페이지와 동일한 내용 제공한다.
 
+<a id="item-tirteen"></a>
+
 ### 6) Create Review, Update Review
 
 ![](README_assets/2023-06-15-02-10-36-image.png)
@@ -230,6 +268,8 @@ def search_music(request, musicname):
 - 각각 리뷰의 제목과 내용을 입력할 수 있다.
 
 - 게시글 수정시에는 영화와 음악 수정 컴포넌트를 따로 설정하지 않고 하나의 컴포넌트를 공유하도록 하였다.
+
+<a id="item-fourteen"></a>
 
 ### 7) Article Detail
 
@@ -247,6 +287,8 @@ def search_music(request, musicname):
 
 - 댓글 수정 버튼 클릭 수정 창, 수정 버튼, 취소 버튼이 활성화되며 `수정` 버튼을 누르거나 `@keyup.enter` 을 사용하여 enter를 클릭시에도 수정이 가능하다.
 
+<a id="item-fifteen"></a>
+
 ### 8) Search
 
 ![](README_assets/2023-06-15-02-14-25-image.png)
@@ -262,6 +304,8 @@ def search_music(request, musicname):
 ![](README_assets/2023-06-15-02-15-14-image.png)
 
 - 음악도 동일하다.
+
+<a id="item-seven"></a>
 
 ## 🎸 기타사항
 

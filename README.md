@@ -257,7 +257,7 @@ def search_music(request, musicname):
 
 - 음악 디테일의 경우 `iframe`을 통해 유튜브 뮤직 비디오를 배경으로 영화 디테일 페이지와 동일한 내용 제공한다.
 
-<a id="item-tirteen"></a>
+<a id="item-thirteen"></a>
 
 ### 6) Create Review, Update Review
 
